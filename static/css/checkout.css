@@ -1,0 +1,175 @@
+@font-face{
+    font-family: "Raleway-regular";
+
+    src: url(../fonts/Raleway-Regular.ttf);
+}
+
+@font-face{
+    font-family: "Raleway-medium";
+
+    src: url(../fonts/Raleway-Medium.ttf);
+}
+@font-face{
+    font-family: "Raleway-bold";
+
+    src: url(../fonts/Raleway-Bold.ttf);
+}
+@font-face{
+    font-family: "Raleway-semibold";
+
+    src: url(../fonts/Raleway-SemiBold.ttf);
+}
+@font-face{
+    font-family: "Raleway-black";
+
+    src: url(../fonts/Raleway-Black.ttf);
+}
+@font-face{
+    font-family: "Raleway-extrabold";
+
+    src: url(../fonts/Raleway-ExtraBold.ttf);
+}
+
+/* COLORS */
+
+:root{
+    --primary:#EEBF00;
+    --secondary:#232b38;
+    --ternary:#6c6c6c;
+    --danger:#fe4545;
+    --pure:#fefefe;
+    --light:#f0f0f0;
+    --heaven:#ffffff;
+    --footer:#2d333f;
+    --creamy: rgb(255, 247, 239);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway-regular";
+}
+
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height:100vh;
+
+    background-color: var(--secondary);
+    border-radius: 5px;
+}
+.payments{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: var(--heaven);
+    box-shadow: 0px 0px 30px 15px rgba(70, 70, 70, 0.2);
+
+}
+.payment_product{
+    padding: 40px;
+    width: 40%;
+    height: 100%;
+    /* background: var(--danger); */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1),rgba(0,0,0,0.95)89%),
+    url("../images/pexels-kio-1093038.jpg");
+    color: var(--primary);
+    background-size: cover;
+}
+
+.cart-items{
+    width: 100px;
+    height: 100%;
+    padding:40px;
+    display:block;
+
+}
+
+.price{
+    background: var(--primary);
+    color: var(--light);
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 22px;
+    font-family: "Raleway-bold";
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.payment-bill{
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+}
+.payment-info h2{
+    color: var(--primary);
+    font-size: 1.4rem;
+    font-weight: 800;
+
+}
+.payment-info .form-input h3{
+    font-size: 1.1rem;
+    /* margin: 1.2rem; */
+    color: var(--footer);
+    margin-top: 1.2rem;
+}
+.payment-info .form-input p{
+    font-size: 0.8rem;
+    margin-top: 0.55rem;
+}
+.payment-info h3 span{
+    color: var(--danger);
+}
+ul{
+    padding: 0%;
+    margin: 0;
+    list-style-type: none;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.2;
+    color: var(--ternary);
+    margin: 0.4rem;
+    font-size: 1rem;
+    font-family: "Raleway-semibold";
+
+}
+li:nth-last-child(1){
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+.payment-form input{
+    width: 100%;
+    border: none;
+    background-color: #e9ece9;
+    padding: 10px 10px;
+    margin-top: 1.7rem;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 200;
+    outline: none;
+    
+}
+
+.payment-form  button{
+    width: 100%;
+    border: none;
+    background: var(--primary);
+    color: var(--light);
+    padding: 10px;
+    font-size: 1.3rem;
+    border-radius: 2px;
+    font-family: "Raleway-bold";
+    /* margin: 1rem 0; */
+    margin-top: 1.6rem;
+    letter-spacing: 1.9;
+    border: none;
+    outline: none;
+
+}
+.payment-form  button:hover{
+    background-color: var(--secondary);
+}
