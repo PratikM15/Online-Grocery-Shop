@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+</head>
+
+<body>
+    <header class="topbar">
+      <div class="container flex justify-between items-center">
+
+          <div class="auth flex justify-between items-center">
+            
+            {% if user %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              Logged In As: {{user[4]}}
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('cart')}}"><img src="{{url_for('static', filename='icons/cart.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('my_orders')}}"><img src="{{url_for('static', filename='icons/bag-2.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('logout')}}"><button class="btn btn-danger">Logout</button></a>
+            </div>
+            {% else %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              <a href="{{ url_for('signin')}}">Log IN</a>
+            </div>
+            <span class="divider">|</span>
+            <div>
+              <img src="{{url_for('static', filename='icons/edit.svg')}}" alt="">
+              <a href="{{ url_for('register')}}">Register Now</a>
+            </div>
+            <span class="divider">|</span>
+            {% endif %}
+        </div>
+      </div>
+  </header>
+
+
+  <nav>
+    <!-- top nabar includes logo & info starts here -->
+    <div class="top">
+      <div class="container flex justify-between items-center">
+        
+        <div class="contact flex justify-between items-center">
+          <img src="{{url_for('static', filename='icons/phone.svg')}}" alt="phone">
+
+          <div>
+            <h5>Call Us : (+91) 9156441201</h5>
+            <h6>E-mail  : support@foodisgood.com </h6>
+          </div>
+        
+        </div>
+
+        <div class="logo">
+            <a href="/">
+          <img src="{{url_for('static', filename='images/logo.jpg')}}" height="56px" width="184px" alt="foodisgood logo">
+            </a>
+        </div>
+
+        <div class="time flex items-center">
+          <img src="{{url_for('static', filename='icons/clock.svg')}}" alt="phone">
+
+          <div>
+            <h5>Working Hours :</h5>
+            <h6>24x7</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- top Navbar ends here  -->
+    <!-- Bottom Navbar Starts Here -->
+  </nav>
+
+    <section class="products">
+        <div class="container">
+            <h2 class="section-heading">Vegetables</h2>
+            <div class="row flex-1">
+                
+                {% for vegetable in vegetables %}
+                <div class="prod-card margin-right">
+                    <div class="imgbx">
+                        <center>
+                        {% if vegetable[1] == 'Tomato' %}
+                        <img src="{{url_for('static', filename='images/tomato.jpg')}}" alt="" width="200" height="100">
+                        {% elif vegetable[1] == 'Potato' %}
+                        <img src="{{url_for('static', filename='images/potato.jpg')}}" alt="" width="200" height="100">
+                        {% elif vegetable[1] == 'Onion' %}
+                        <img src="{{url_for('static', filename='images/onion.jpg')}}" alt="" width="200" height="100">
+                        {% elif vegetable[1] == 'Brinjal' %}
+                        <img src="{{url_for('static', filename='images/brinjal.jpg')}}" alt="" width="200" height="100">
+                        {% elif vegetable[1] == 'Spinach' %}
+                        <img src="{{url_for('static', filename='images/spinach.jpg')}}" alt="" width="200" height="100">
+                        {% endif %}
+                        </center>
+                    </div>
+        
+                    <div class="prod-desc">
+                        <h2 class="margin-bottom">{{vegetable[1]}}</h2>
+                    </div>
+                    <div class="prod-price">
+                        <h4>Rs. {{vegetable[2]}}</h4>
+                    </div>
+                    <div class="button">
+                        <a href="{{url_for('add_to_cart', id=vegetable[0])}}">
+                            <center><button class="btn btn-primary">Add to Cart</button></center>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </section>
+    
+    <section class="products">
+        <div class="container">
+            <h2 class="section-heading">Fruits</h2>
+            <div class="row flex-1">
+                
+                {% for fruit in fruits %}
+                <div class="prod-card margin-right">
+                    <div class="imgbx">
+                        <center>
+                        {% if fruit[1] == 'Apple' %}
+                        <img src="{{url_for('static', filename='images/apple.jpg')}}" alt="" width="200" height="100">
+                        {% elif fruit[1] == 'Banana' %}
+                        <img src="{{url_for('static', filename='images/banana.jpg')}}" alt="" width="200" height="100">
+                        {% elif fruit[1] == 'Grapes' %}
+                        <img src="{{url_for('static', filename='images/grapes.jpg')}}" alt="" width="200" height="100">
+                        {% elif fruit[1] == 'Watermelon' %}
+                        <img src="{{url_for('static', filename='images/watermelon.jpg')}}" alt="" width="200" height="100">
+                        {% endif %}
+                        </center>
+                    </div>
+        
+                    <div class="prod-desc">
+                        <h2 class="margin-bottom">{{fruit[1]}}</h2>
+                    </div>
+                    <div class="prod-price">
+                        <h4>Rs. {{fruit[2]}}</h4>
+                    </div>
+                    <div class="button">
+                        <a href="{{url_for('add_to_cart', id=fruit[0])}}">
+                            <center><button class="btn btn-primary">Add to Cart</button></center>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </section>
+    
+</body>
+
+</html>

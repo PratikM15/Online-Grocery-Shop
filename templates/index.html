@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Is Good</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+  <header class="topbar">
+      <div class="container flex justify-between items-center">
+
+          <div class="auth flex justify-between items-center">
+            
+            {% if user %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              Logged In As: {{user[4]}}
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('cart')}}"><img src="{{url_for('static', filename='icons/cart.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('my_orders')}}"><img src="{{url_for('static', filename='icons/bag-2.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('logout')}}"><button class="btn btn-danger">Logout</button></a>
+            </div>
+            {% else %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              <a href="{{ url_for('signin')}}">Log IN</a>
+            </div>
+            <span class="divider">|</span>
+            <div>
+              <img src="{{url_for('static', filename='icons/edit.svg')}}" alt="">
+              <a href="{{ url_for('register')}}">Register Now</a>
+            </div>
+            <span class="divider">|</span>
+            {% endif %}
+        </div>
+      </div>
+  </header>
+
+
+  <nav>
+    <!-- top nabar includes logo & info starts here -->
+    <div class="top">
+      <div class="container flex justify-between items-center">
+        
+        <div class="contact flex justify-between items-center">
+          <img src="{{url_for('static', filename='icons/phone.svg')}}" alt="phone">
+
+          <div>
+            <h5>Call Us : (+91) 9156441201</h5>
+            <h6>E-mail  : support@foodisgood.com </h6>
+          </div>
+        
+        </div>
+
+        <div class="logo">
+            <a href="/">
+          <img src="{{url_for('static', filename='images/logo.jpg')}}" height="56px" width="184px" alt="foodisgood logo">
+            </a>
+        </div>
+
+        <div class="time flex items-center">
+          <img src="{{url_for('static', filename='icons/clock.svg')}}" alt="phone">
+
+          <div>
+            <h5>Working Hours :</h5>
+            <h6>24x7</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- top Navbar ends here  -->
+    <!-- Bottom Navbar Starts Here -->
+
+    <div class="navbar magic-shadow">
+      <div class="container flex items-center justify-center">
+        <a href="/" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="{{url_for('products')}}">Products</a>
+        <a href="#blog">Blog</a>
+        <a href="#shop">Shop</a>
+        <a href="#services">Services</a>
+        <a href="#">Gallery</a>
+        <a href="#contact">Contact Us</a>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero flex items-center">
+    <div class="container">
+      <div class="welcome flex items-center">
+      <span>Welcome To </span>
+      <img src="{{url_for('static', filename='images/logo.jpg')}}" height="56px" width="180px" alt="">
+    </div>
+
+    <h1>Best & Fresh You Will Find <span>@foodisgood</span> </h1>
+    <p>We Deliver Fresh Vegetables and Fruits.</p>
+
+      <div>
+        <button class="btn btn-primary">Read More</button>
+        <button class="btn btn-secondary">Shop Now</button>
+      </div>
+      <div class="hero-img">
+        <img src="{{url_for('static', filename='images/straw.png')}}" alt="">
+      </div>
+  </div>
+  </header>
+
+  <section class="top-product" id="shop">
+
+    <div class="container">
+      <h1 class="section-heading">Top Products</h1>
+      <div class="slider">
+
+        <button class="slider-btn prev-btn"><img src="{{url_for('static', filename='icons/pre.svg')}}" alt=""></button>
+        <button class="slider-btn next-btn"><img src="{{url_for('static', filename='icons/next.svg')}}" alt=""></button>
+
+        <div class="food-slider">
+          <!-- one food card starts here -->
+            {% for fruit in fruits %}
+          <div class="food-card">
+            <div class="product-image flex items-center justify-center">
+                        {% if fruit[1] == 'Apple' %}
+                        <img src="{{url_for('static', filename='images/apple.jpg')}}" alt="" >
+                        {% elif fruit[1] == 'Banana' %}
+                        <img src="{{url_for('static', filename='images/banana.jpg')}}" alt="">
+                        {% elif fruit[1] == 'Grapes' %}
+                        <img src="{{url_for('static', filename='images/grapes.jpg')}}" alt="" >
+                        {% elif fruit[1] == 'Watermelon' %}
+                        <img src="{{url_for('static', filename='images/watermelon.jpg')}}" alt="" >     
+                        {% endif %}
+            
+            </div>
+            <hr>
+
+            <div>
+              <h2 class="text-center">{{fruit[1]}}</h2>
+              <div class="stars flex justify-center items-center">
+                <img src="{{url_for('static', filename='icons/start-filled.svg')}}" alt="">
+                <img src="{{url_for('static', filename='icons/start-filled.svg')}}" alt="">
+                <img src="{{url_for('static', filename='icons/start-filled.svg')}}" alt="">
+                <img src="{{url_for('static', filename='icons/start-filled.svg')}}" alt="">
+                <img src="{{url_for('static', filename='icons/start-filled.svg')}}" alt="">
+              </div>
+
+              <div class="price text-center">
+                Rs. {{fruit[2]}}
+              </div>
+            <a class="flex justify-center" href="{{url_for('add_to_cart', id=fruit[0])}}" style="text-decoration: none">
+              <button>
+                <img src="{{url_for('static', filename='icons/cart-2.svg')}}" alt="">
+                <span>Add to cart</span>
+              </button>
+            </a>
+            </div>
+          </div>
+            {% endfor %}
+          <!-- one food card Ends here -->
+
+        </div>
+
+      </div>
+      <div class="text-center btn-wrapper">
+          <a href="{{url_for('products')}}">
+        <button class="btn btn-secondary">View More</button>
+          </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-foodisgood" id="about">
+    <div class="container">
+      <h1 class="section-heading">About foodisgood</h1>
+      <div class="about-wrap flex">
+        <div class="flex-1">
+          <img src="{{url_for('static', filename='images/yogurt.png')}}" alt="">
+        </div>
+        <div class="flex-1">
+          <h2><span>foodisgood</span> is better known for quality and Fresh Fruit & Vegetables.</h2>
+          <p>We deliver Fresh Products and Customers are important to us.</p>
+
+          <button class="btn btn-secondary">Read More</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="our-services" id="services">
+    <div class="container">
+      <h1 class="section-heading">Our Services</h1>
+
+      <div class="card-wrapper flex">
+        <div class="service-card">
+          <img class="icon" src="{{url_for('static', filename='icons/transport.svg')}}" alt="">
+          <h2>Free Home Delivery</h2>
+          <p>We never charge any fee for delivery.</p>
+
+          <button class="btn btn-secondary">Read More</button>
+        </div>
+
+        <div class="service-card">
+          <img class="icon" src="{{url_for('static', filename='icons/bag.svg')}}" alt="">
+          <h2 class="text-primary">Easy Order Cancellation.</h2>
+          <p>You can cancel your order anytime. 
+          </p>
+
+          <button class="btn btn-primary">Read More</button>
+        </div>
+
+        <div class="service-card">
+          <img class="icon" src="{{url_for('static', filename='icons/usd.svg')}}" alt="">
+          <h2>In-store Pickup</h2>
+          <p>You can pick your order from our stores.</p>
+
+          <button class="btn btn-secondary">Read More</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="big-deal">
+    <div class="container">
+      <h1 class="section-heading text-pure">Big Deals of the Weak</h1>
+      <div class="timer">
+        <div>
+          <span>02</span>
+          <span>Days</span>
+        </div>
+        <div>
+          <span id="hours"></span>
+          <span>Hours</span>
+        </div>
+        <div>
+          <span id="minutes"></span>
+          <span>Minutes</span>
+        </div>
+        <div>
+          <span id="seconds"></span>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <section class="latest-news" id="blog">
+    <div class="container">
+      <h1 class="section-heading">Latest News from Blog</h1>
+
+      <div class="article-wrapper">
+        <article class="card">
+          <div>
+            <img src="{{url_for('static', filename='images/donut.jpg')}}" alt="">
+          </div>
+          <div class="card-content">
+            <div class="post-meta flex items-center justify-between">
+              <span>January 09, 2020</span>
+
+              <div>
+                <span>Posted by <strong>foodisgood</strong></span>
+                <span class="comment-count"></span>
+              </div>
+            </div>
+
+            <p>A doughnut or donut (the latter spelling often seen in American English and Canadian English) (IPA: /doʊnət/) is a type of fried dough confection or dessert food. It is popular in many countries and is prepared in various forms as a sweet snack that can be homemade or purchased in bakeries, supermarkets, food stalls, and franchised specialty vendors. </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <img src="{{url_for('static', filename='images/coffee.jpg')}}" alt="">
+          </div>
+          <div class="card-content">
+            <div class="post-meta flex items-center justify-between">
+              <span>December 12,2020</span>
+
+              <div>
+                <span>Posted by <strong>foodisgood</strong></span>
+                <span class="comment-count"></span>
+              </div>
+            </div>
+
+            <p>Cake is a form of sweet food made from flour, sugar, and other ingredients, that is usually baked. In their oldest forms, cakes were modifications of bread, but cakes now cover a wide range of preparations that can be simple or elaborate, and that share features with other desserts such as pastries, meringues, custards, and pies. </p>
+          </div>
+        </article>
+
+
+
+      </div>
+      <div class="text-center btn-wrapper">
+        <button class="btn btn-secondary">View All</button>
+      </div>
+    </div>
+  </section>
+ 
+ 
+  <section class="subscribe">
+    <div class="container flex items-center">
+      <div>
+        <img src="{{url_for('static', filename='images/rasberry.png')}}" alt="">
+      </div>
+
+      <div>
+        <h1>Subscribe to Our Newsletter</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam.</p>
+
+        <div class="input-wrap">
+          <input type="email" name="email" placeholder="email@foodisgood.online">
+          <button>Subscribe</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="contact-us flex" id="contact">
+    <div class="contact-info-wrapper">
+      <h1 class="section-heading">Contact Us</h1>
+
+      <div class="contact-info">
+        <div>
+          <div>
+            <img src="{{url_for('static', filename='icons/phone-2.svg')}}" alt="">
+
+            <div>
+              <span> Call Us</span>
+              <span>(+91) 9156441201</span>
+            </div>
+          </div>
+          <div>
+            <img src="{{url_for('static', filename='icons/bag-2.svg')}}" alt="">
+
+            <div>
+              <span>E-mail :</span>
+              <span>support@foodisgood.com</span>
+            </div>
+          </div>
+          <div>
+            <img src="{{url_for('static', filename='icons/clock-2.svg')}}" alt="">
+
+            <div>
+              <span>Working Hours:</span>
+              <span>24x7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map" style="padding-top: 20px">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.3491914544345!2d78.98455960285574!3d21.10004392349683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd49524c5451b35%3A0x92453c123c1c5923!2sWanadongri%2C%20Nildoh%2C%20Nagpur%2C%20Maharashtra%20440016!5e0!3m2!1sen!2sin!4v1609150919149!5m2!1sen!2sin" width="80%" height="80%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </section>
+ <footer>
+   <div class="container">
+     <div class="box">
+       <h3>About Us</h3>
+          <p>We deliver Fresh Products and Customers are important to us.</p>
+         <a href="#about"><button class="btn btn-secondary">Read More</button></a>
+     </div>
+     <div class="box">
+       <h3>Quick Links</h3>
+       <ul>
+         <li><a href="#top">Home</a></li>
+         <li><a href="#about">About Us</a></li>
+         <li><a href="{{url_for('products')}}">Products</a></li>
+         <li><a href="#blog">Blog</a></li>
+         <li><a href="#">Gallery</a></li>
+         <li><a href="#contact">Contact Us</a></li>
+       </ul>
+     </div>
+     <div class="box">
+       <h3>Follow Us</h3>
+       <div>
+       <ul>
+         <li>
+           <a href="#">
+             <img src="{{url_for('static', filename='icons/facebook.svg')}}" alt="">
+             <span>Facebook</span>
+           </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="{{url_for('static', filename='icons/twitter.svg')}}" alt="">
+              <span>Twitter</span>
+            </a>
+           </li>
+           <li>
+            <a href="#">
+              <img src="{{url_for('static', filename='icons/instagram.svg')}}" alt="">
+              <span>Instagram</span>
+            </a>
+           </li>
+           <li>
+            <a href="#">
+              <img src="{{url_for('static', filename='icons/google.svg')}}" alt="">
+              <span>Google</span>
+            </a>
+           </li>
+
+       </ul>
+      </div>
+     </div>
+
+     <div class="box instagram-api">
+       <h3>Instagram</h3>
+       <div class="post-wrapper">
+         <div>
+           <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+
+         </div>
+         <div>
+          <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+          
+        </div>
+        <div>
+          <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+          
+        </div>
+        <div>
+          <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+          
+        </div>
+        <div>
+          <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+          
+        </div>
+        <div>
+          <img src="{{url_for('static', filename='images/food-table.jpg')}}" alt="">
+          
+        </div>
+       </div>
+     </div>
+   </div>
+ </footer>
+
+ <footer class="copyright">
+   <div>
+     Copyright &copy; 2021 | All rights reserved by <a href="#">Code Blooded</a>
+   </div>
+ </footer>
+ 
+ 
+ 
+ 
+ 
+ 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="{{url_for('static', filename='javascript/app.js')}}"></script>
+</body>
+</html>

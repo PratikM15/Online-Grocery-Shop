@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="" style="padding-top: 100px;margin:0 auto; width:400px">
+        <div class="">
+            <div class="heading">
+                <div>
+                    <h2 class="section-heading">Add Product <span>@foodisgood</span></h2>
+                </div>
+                
+                <form action="{{url_for('admin')}}" method="POST" class="form">
+                    <div style="padding: 5px">
+                    <input type="text" name="name" placeholder="Product Name" class="form-control" required>
+                    </div>
+                    <div style="padding: 5px">
+                    <input type="text" name="price" placeholder="Product Price Per KG" class="form-control" required>
+                    </div>
+                    <div style="padding: 5px">
+                    <input type="text" name="url" placeholder="Image URL" class="form-control" required>
+                    </div>
+                    <div style="padding: 5px">
+                    <input type="text" name="category" placeholder="Category" class="form-control" required>
+                    </div>
+                    <div style="padding: 5px">
+                    <input type="text" name="total" placeholder="Total Quantity" class="form-control" required>
+                    </div>
+                    <div style="color:red">{{error}}</div>
+                    <center><input class="btn btn-success" type="submit" value="Add" id="btn" style="margin-top: 10px"></center>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" style="padding: 30px">
+        <center><h3>All Vegetables</h3></center>
+    <table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Delete</th>
+    </tr>
+        {% for vegetable in vegetables %}
+    <tr>
+        <td>{{vegetable[0]}}</td>
+        <td>{{vegetable[1]}}</td>
+        <td>{{vegetable[2]}}</td>
+        <td>{{vegetable[5]}}</td>
+        <td>{{vegetable[4]}}</td>
+        <td><a href="{{url_for('delete_product', id=vegetable[0])}}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <hr>
+    <div class="container" style="padding: 30px">
+        <center><h3>All Fruits</h3></center>
+    <table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Delete</th>
+    </tr>
+        {% for fruit in fruits %}
+    <tr>
+        <td>{{fruit[0]}}</td>
+        <td>{{fruit[1]}}</td>
+        <td>{{fruit[2]}}</td>
+        <td>{{fruit[5]}}</td>
+        <td>{{fruit[4]}}</td>
+        <td><a href="{{url_for('delete_product', id=fruit[0])}}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>

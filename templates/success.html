@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Payments</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/checkout.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body>
+    <header class="topbar">
+      <div class="container flex justify-between items-center">
+
+          <div class="auth flex justify-between items-center">
+            
+            {% if user %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              Logged In As: {{user[4]}}
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('cart')}}"><img src="{{url_for('static', filename='icons/cart.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('my_orders')}}"><img src="{{url_for('static', filename='icons/bag-2.svg')}}" alt=""></a>
+            </div>
+              <span class="divider">|</span>
+            <div>
+              <a href="{{ url_for('logout')}}"><button class="btn btn-danger">Logout</button></a>
+            </div>
+            {% else %}
+            <div>
+              <img src="{{url_for('static', filename='icons/user-icon.svg')}}" alt="">
+              <a href="{{ url_for('signin')}}">Log IN</a>
+            </div>
+            <span class="divider">|</span>
+            <div>
+              <img src="{{url_for('static', filename='icons/edit.svg')}}" alt="">
+              <a href="{{ url_for('register')}}">Register Now</a>
+            </div>
+            <span class="divider">|</span>
+            {% endif %}
+        </div>
+      </div>
+  </header>
+
+
+  <nav>
+    <!-- top nabar includes logo & info starts here -->
+    <div class="top">
+      <div class="container flex justify-between items-center">
+        
+        <div class="contact flex justify-between items-center">
+          <img src="{{url_for('static', filename='icons/phone.svg')}}" alt="phone">
+
+          <div>
+            <h5>Call Us : (+91) 9156441201</h5>
+            <h6>E-mail  : support@foodisgood.com </h6>
+          </div>
+        
+        </div>
+
+        <div class="logo">
+            <a href="/">
+          <img src="{{url_for('static', filename='images/logo.jpg')}}" height="56px" width="184px" alt="foodisgood logo">
+            </a>
+        </div>
+
+        <div class="time flex items-center">
+          <img src="{{url_for('static', filename='icons/clock.svg')}}" alt="phone">
+
+          <div>
+            <h5>Working Hours :</h5>
+            <h6>24x7</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- top Navbar ends here  -->
+    <!-- Bottom Navbar Starts Here -->
+  </nav>
+    
+    <div style="padding: 30px">
+    <center><h1>Order Placed Successfully</h1></center>
+    </div>
+    
+    <div class="container" style="padding-top: 40px;padding-left: 40px;">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Product</th>
+            <th>Quantity(KG)</th>   
+            <th>Price</th>   
+        </tr>
+        </thead>
+        {% for item in booking %}
+        <tr>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+            <td>{{item[6]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+      <section id="wrapper" style="background-color: white">
+            <div class="payment-bill">
+              <h1 class="section-heading">Receipt Summary</h1>
+                <center><h3>Receipt ID : {{receipt_id}}</h3></center>
+              <ul>
+              <li>
+                <span>Subtotal</span>
+                <span>Rs. {{subtotal}}</span>
+
+              </li>
+              <li>
+                <span>Tax</span>
+                <span>Rs. {{tax}}</span>
+                
+              </li>
+              <li>
+                <span><strong> Total</strong></span>
+                <span><strong>Rs. {{total}}</strong></span>
+                
+              </li>
+              </ul>
+              <hr>
+                <center><button class="btn btn-info" onclick="window.print()">Print Receipt</button></center>
+            </div>
+    </section>
+    </body>
+</html>

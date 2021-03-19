@@ -1,0 +1,190 @@
+/* fonts */
+
+@font-face{
+    font-family: "Raleway-regular";
+
+    src: url(../fonts/Raleway-Regular.ttf);
+}
+
+@font-face{
+    font-family: "Raleway-medium";
+
+    src: url(../fonts/Raleway-Medium.ttf);
+}
+@font-face{
+    font-family: "Raleway-bold";
+
+    src: url(../fonts/Raleway-Bold.ttf);
+}
+@font-face{
+    font-family: "Raleway-semibold";
+
+    src: url(../fonts/Raleway-SemiBold.ttf);
+}
+@font-face{
+    font-family: "Raleway-black";
+
+    src: url(../fonts/Raleway-Black.ttf);
+}
+@font-face{
+    font-family: "Raleway-extrabold";
+
+    src: url(../fonts/Raleway-ExtraBold.ttf);
+}
+
+/* COLORS */
+
+:root{
+    --primary:#EEBF00;
+    --secondary:#232b38;
+    --ternary:#6c6c6c;
+    --danger:#fe4545;
+    --pure:#fefefe;
+    --light:#f0f0f0;
+    --heaven:#ffffff;
+    --footer:#2d333f;
+    --google:#dd4b39;
+    --fb:#3b5998;
+    --twitter:#1da1f2;
+}
+
+/* Reset */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Raleway-regular";
+    text-decoration: none;
+}
+.container{
+    background: var(--footer);
+    min-height: 100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+   
+}
+.login-card{
+    background:var(--heaven);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 1rem;
+}
+.login-card .heading h2{
+    color: var(--secondary);
+    font-family: "Raleway-bold";
+    font-size: 2.1rem;
+    margin-bottom: 0.6rem;
+}
+.login-card .heading h2 span{
+    color: var(--primary);
+    /* line-height: 1.6; */
+    font-family: "Raleway-bold";
+}
+.login-card .heading p{
+    color: var(--secondary);
+    letter-spacing: 1.2px;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.login-card .social-icons{
+    list-style-type: none;
+    display: flex;
+    /* flex-direction: row; */
+    margin-bottom: 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0 2rem; */
+    
+}
+
+.login-card .social-icons .si{
+   padding: 0.1rem 1rem;
+   margin: 5px;
+   display: flex;
+   flex-direction: row;
+   color: var(--pure);
+   font-size: 1.5rem;
+   align-items: center;
+   text-align: center;
+   justify-content: center;
+   border-radius: 3px;
+   line-height: 30px;
+   height: 100%;
+   
+   
+}
+.login-card .social-icons .google{
+    background: var(--google);
+    color: var(--pure);
+    /* width: 50%; */
+}
+.login-card .social-icons .google li{
+    font-family: "Raleway-medium";
+}
+.login-card .social-icons .google li a img{
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+.login-card .social-icons .fb{
+    background: var(--fb);
+    color: var(--pure);
+    
+    /* width: 100%; */
+}
+.login-card .social-icons .twitter{
+    background: var(--twitter);
+    color: var(--pure);
+    /* width: 100%; */
+}
+
+.login-card .input-wrap{
+    display: flex;
+    flex-direction: column;
+    /* padding: 0 1rem; */
+    
+}
+.login-card .input-wrap input{
+    padding: 0.55rem 1rem;
+    margin:0.5rem 1rem;
+    border: 1px solid var(--primary);
+    outline: none;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+.login-card .input-wrap #btn{
+    background:var(--primary);
+    color: var(--pure);
+    font-family: "Raleway-semibold";
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    
+}
+.login-card .input-wrap .checkbox{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+}
+.login-card .input-wrap .checkbox span{
+    margin-top: 0.49rem;
+    margin-left: -0.5rem;
+}
+.login-card .input-wrap .checkbox input{
+    color: blue;
+    background: cadetblue;
+    
+}
+.login-card .input-wrap #btn:hover{
+    background:var(--secondary);
+    color: var(--pure);
+    border: 1px solid var(--secondary);
+    transition: all 0.2s;
+}
+.login-card .account-info{
+    display: flex;
+    padding: 5px;
+    font-weight: 300;
+}
